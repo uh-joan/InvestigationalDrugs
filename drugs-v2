@@ -1,0 +1,1445 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<grammars>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://serviceversion" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://serviceversion">
+<xs:import/>
+<xs:element name="serviceVersion" type="serviceVersion"/>
+<xs:element name="serviceVersions">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="serviceVersion"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://serviceversion" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://serviceversion">
+<xs:element name="ChangeHistory" type="drugChangeHistoryOutput"/>
+<xs:element name="batchDrugSourcesOutput" type="batchDrugSourcesOutput"/>
+<xs:element name="companiesLinkedToIndicationOutput" type="companiesLinkedToIndicationOutput"/>
+<xs:element name="companiesLinkedToTaxonomyOutput" type="companiesLinkedToTaxonomyOutput"/>
+<xs:element name="drugFinancialsOutput" type="drugFinancialsOutput"/>
+<xs:element name="drugRecordOutput" type="drugRecordOutput"/>
+<xs:element name="drugRecordsOutput" type="drugRecordsOutput"/>
+<xs:element name="drugResultsOutput" type="drugResultsOutput"/>
+<xs:element name="drugSourceOutput" type="drugSourceOutput"/>
+<xs:element name="drugSourcesOutput" type="drugSourcesOutput"/>
+<xs:element name="drugSwotsOutput" type="drugSwotsOutput"/>
+<xs:element name="searchSuggestionsEntitiesOutput" type="searchSuggestionsEntitiesOutput"/>
+<xs:element name="sourceSummaryOutput" type="sourceSummaryOutput"/>
+<xs:element name="structureMolOutput" type="structureMolOutput"/>
+<xs:element name="structureResultsOutput" type="structureResultsOutput"/>
+<xs:element name="taxonomyOutput" type="taxonomyOutput"/>
+<xs:complexType name="drugFinancialsOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="DrugSalesAndForecastCommentary" type="xs:string"/>
+<xs:element minOccurs="0" name="Financials">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Financial" type="drugFinancialRecordOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugFinancialRecordOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Company" type="defaultPairOutput"/>
+<xs:element minOccurs="0" name="Year" type="xs:string"/>
+<xs:element minOccurs="0" name="Region" type="xs:string"/>
+<xs:element minOccurs="0" name="Sales" type="xs:decimal"/>
+<xs:element minOccurs="0" name="NumberOfPublications" type="xs:string"/>
+<xs:element minOccurs="0" name="Forecast" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationAnnualPriority" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="defaultPairOutput">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="batchDrugSourcesOutput">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Sources" type="drugSourceOutput"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugSourceOutput">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Source" type="commonSourceOutput"/>
+</xs:sequence>
+<xs:attribute name="drugId" type="xs:int"/>
+</xs:complexType>
+<xs:complexType name="commonSourceOutput">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="sourceSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="SourceId" type="xs:string"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Authors">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Author" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Origin" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationDetails" type="publicationDetails"/>
+<xs:element minOccurs="0" name="isConferencePresentation" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="publicationDetails">
+<xs:sequence>
+<xs:element minOccurs="0" name="Date" type="xs:string"/>
+<xs:element minOccurs="0" name="Issue" type="xs:string"/>
+<xs:element minOccurs="0" name="Volume" type="xs:string"/>
+<xs:element minOccurs="0" name="Year" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="searchSuggestionsEntitiesOutput">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="suggestion" type="suggestionEntity"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="suggestionEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+<xs:element minOccurs="0" name="primaryTerm" type="xs:string"/>
+<xs:element minOccurs="0" name="rank" type="xs:string"/>
+<xs:element minOccurs="0" name="synonymId" type="xs:string"/>
+<xs:element minOccurs="0" name="term" type="xs:string"/>
+<xs:element minOccurs="0" name="type" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugResultsOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="SearchResults">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Drug" type="drugResultsOutputRecord"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Filters" type="drugResultsOutputFilters"/>
+<xs:element minOccurs="0" name="NormalizedQuery" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="hits" type="xs:int" use="required"/>
+<xs:attribute name="offset" type="xs:int" use="required"/>
+<xs:attribute name="totalResults" type="xs:int" use="required"/>
+</xs:complexType>
+<xs:complexType name="drugResultsOutputRecord">
+<xs:sequence>
+<xs:element minOccurs="0" name="CompanyOriginator" type="xs:string"/>
+<xs:element minOccurs="0" name="CompaniesPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="RegulatoryDesignations">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="RegulatoryDesignation" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="IndicationsPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ActionsPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Technologies">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Technology" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="TherapyAreas">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="TherapyArea" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Summary" type="xs:string"/>
+<xs:element minOccurs="0" name="CompaniesSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="IndicationsSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ActionsSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="AddedDate" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="lastModificationDate" type="xs:string"/>
+<xs:attribute name="phaseHighest" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugResultsOutputFilters">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Filter" type="drugResultsOutputFilter"/>
+</xs:sequence>
+<xs:attribute name="total" type="xs:int" use="required"/>
+</xs:complexType>
+<xs:complexType name="drugResultsOutputFilter">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="FilterOption" type="drugResultsOutputFilterOption"/>
+</xs:sequence>
+<xs:attribute name="label" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="total" type="xs:int" use="required"/>
+</xs:complexType>
+<xs:complexType name="drugResultsOutputFilterOption">
+<xs:sequence/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="count" type="xs:int" use="required"/>
+<xs:attribute name="label" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="taxonomyOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="TaxonomyTree">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Node" type="taxonomyOutputTerm"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="taxonomyOutputTerm">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Node" type="taxonomyOutputTerm"/>
+</xs:sequence>
+<xs:attribute name="match" type="xs:boolean"/>
+<xs:attribute name="depth" type="xs:int"/>
+<xs:attribute name="leaf" type="xs:boolean" use="required"/>
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="treeCode" type="xs:string"/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="count" type="xs:int"/>
+</xs:complexType>
+<xs:complexType name="drugRecordOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="DrugName" type="xs:string"/>
+<xs:element minOccurs="0" name="DrugNamesKey">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Name" type="drugRecordOutputDrugNameKey"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="DrugSynonyms">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Name" type="drugRecordOutputDrugSynonym"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CompanyOriginator" type="drugRecordOutputCompany"/>
+<xs:element minOccurs="0" name="CompaniesPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="drugRecordOutputCompany"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CompaniesSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="drugRecordOutputCompany"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CrossReferences">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SourceEntity" type="sourceEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="PhaseHighest" type="drugRecordOutputPhaseHighest"/>
+<xs:element minOccurs="0" name="PhaseHighestDetailed">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="FirstLaunched" type="drugRecordOutputPhaseHighestLaunchedDetailed"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="PhaseTerminated" type="drugRecordOutputPhaseTerminated"/>
+<xs:element minOccurs="0" name="RegulatoryDesignations">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="RegulatoryDesignation" type="drugRecordOutputDrugRegulatoryDesignation"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="IndicationsPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="drugRecordOutputIndication"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="IndicationsSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="drugRecordOutputIndication"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ActionsPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="drugRecordOutputAction"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ActionsSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="drugRecordOutputAction"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Technologies">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Technology" type="drugRecordOutputTechnology"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="TherapyAreas">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="TherapyArea" type="drugRecordOutputTherapyArea"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="EphmraCodes">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Ephmra" type="drugRecordOutputEphmra"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="LastModificationDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ChangeDateLast" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="AddedDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DevelopmentProfile" type="drugRecordDevProfile"/>
+<xs:element minOccurs="0" name="ExpertReview" type="xs:string"/>
+<xs:element minOccurs="0" name="IDdbDevelopmentStatus" type="drugRecordOutputIDdbDevelopmentStatus"/>
+<xs:element minOccurs="0" name="RegulatoryDesignationStatus">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Row" type="drugRecordOutputRegulatoryDesignationStatusRow"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Targets">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Target" type="drugRecordOutputTarget"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ReasonsForUpdate">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ReasonForUpdate" type="drugRecordOutputReasonForUpdate"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Sources">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Source" type="commonSourceOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CountsByCompanies">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="dealCountsByCompanies"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CountsByTypes">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Type" type="dealCountsByTypes"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="StructureSmiles">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Smiles" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Deals">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Deal" type="dealLink"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="PatentFamilies">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="PatentFamily" type="drugPatentLink"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="PatentFamilyCountsByTypes">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="PatentFamilyCountsByType" type="drugPatentCountsByType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="PatentFamilyCountsByCompanies">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="PatentFamilyCountsByCompany" type="drugPatentCountsByCompany"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="hasSWOTs" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDrugNameKey">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDrugSynonym">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" type="xs:string"/>
+<xs:element minOccurs="0" name="Types">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Type" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputCompany">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="sourceEntity">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="TargetEntity" type="targetEntity"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="SourceEntityType"/>
+</xs:complexType>
+<xs:complexType name="targetEntity">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="TargetEntityType"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputPhaseHighest">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:simpleType name="drugRecordOutputPhaseHighestLaunchedDetailed">
+<xs:restriction base="xs:string"/>
+</xs:simpleType>
+<xs:complexType name="drugRecordOutputPhaseTerminated">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDrugRegulatoryDesignation">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputIndication">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputAction">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputTechnology">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputTherapyArea">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputEphmra">
+<xs:sequence>
+<xs:element minOccurs="0" name="Code" type="xs:string"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordDevProfile">
+<xs:sequence>
+<xs:element minOccurs="0" name="Summary" type="devProfileSubsection"/>
+<xs:element minOccurs="0" name="PatentsAndGenerics" type="devProfileSubsection"/>
+<xs:element minOccurs="0" name="Regulatory" type="devProfileSubsection"/>
+<xs:element minOccurs="0" name="Postmarketing" type="devProfileSubsection"/>
+<xs:element minOccurs="0" name="Premarketing" type="devProfileSubsection"/>
+<xs:element minOccurs="0" name="Preclinical" type="devProfileSubsection"/>
+<xs:element minOccurs="0" name="AdditionalInformation" type="devProfileSubsection"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="devProfileSubsection">
+<xs:sequence>
+<xs:element minOccurs="0" name="displayLabel" type="xs:string"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputIDdbDevelopmentStatus">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="DevelopmentStatusCurrent" type="drugRecordOutputIDdbDevelopmentStatusRow"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="DevelopmentStatusHistoric" type="drugRecordOutputIDdbDevelopmentStatusRow"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputIDdbDevelopmentStatusRow">
+<xs:sequence>
+<xs:element minOccurs="0" name="Company" type="drugRecordOutputCompany"/>
+<xs:element minOccurs="0" name="Country" type="drugRecordOutputCountry"/>
+<xs:element minOccurs="0" name="DevelopmentStatus" type="drugRecordOutputDevelopmentStatus"/>
+<xs:element minOccurs="0" name="DiscontinuedReason" type="drugRecordOutputDiscontinuedReason"/>
+<xs:element minOccurs="0" name="Indication" type="drugRecordOutputIndication"/>
+<xs:element minOccurs="0" name="StatusDate" type="xs:anySimpleType"/>
+<xs:element minOccurs="0" name="Source" type="drugSourceLink"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputCountry">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDevelopmentStatus">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="sortOrder" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDiscontinuedReason">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugSourceLink">
+<xs:sequence/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputRegulatoryDesignationStatusRow">
+<xs:sequence>
+<xs:element minOccurs="0" name="RegulatoryDesignation" type="drugRecordOutputDrugRegulatoryDesignation"/>
+<xs:element minOccurs="0" name="OwnerCompany" type="drugRecordOutputCompany"/>
+<xs:element minOccurs="0" name="Country" type="drugRecordOutputCountry"/>
+<xs:element minOccurs="0" name="Indication" type="drugRecordOutputIndication"/>
+<xs:element minOccurs="0" name="AwardedIndication" type="xs:string"/>
+<xs:element minOccurs="0" name="DesignationType" type="drugRecordOutputDesignationType"/>
+<xs:element minOccurs="0" name="DesignationApplicationStatus" type="drugRecordOutputDesignationApplicationStatus"/>
+<xs:element minOccurs="0" name="MileStoneDate" type="xs:anySimpleType"/>
+<xs:element minOccurs="0" name="Source" type="drugSourceLink"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDesignationType">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputDesignationApplicationStatus">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputTarget">
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element minOccurs="0" name="SwissprotNumbers">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Swissprot" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugRecordOutputReasonForUpdate">
+<xs:sequence>
+<xs:element minOccurs="0" name="Reason" type="xs:string"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="dealCountsByCompanies">
+<xs:sequence>
+<xs:element minOccurs="0" name="Company" type="drugRecordOutputCompany"/>
+<xs:element minOccurs="0" name="CountAsPrincipalActive" type="xs:int"/>
+<xs:element minOccurs="0" name="CountAsPrincipalInactive" type="xs:int"/>
+<xs:element minOccurs="0" name="CountAsPartnerActive" type="xs:int"/>
+<xs:element minOccurs="0" name="CountAsPartnerInactive" type="xs:int"/>
+<xs:element minOccurs="0" name="CountTotal" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="dealCountsByTypes">
+<xs:sequence>
+<xs:element minOccurs="0" name="Type" type="dealCountByType"/>
+<xs:element minOccurs="0" name="CountActive" type="xs:int"/>
+<xs:element minOccurs="0" name="CountInactive" type="xs:int"/>
+<xs:element minOccurs="0" name="CountTotal" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="dealCountByType">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="sortOrder" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="dealLink">
+<xs:sequence/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="title" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugPatentLink">
+<xs:sequence/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="number" type="xs:string"/>
+<xs:attribute name="title" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugPatentCountsByType">
+<xs:sequence>
+<xs:element minOccurs="0" name="Type" type="drugPatentCountType"/>
+<xs:element minOccurs="0" name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugPatentCountType">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="sortorder" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugPatentCountsByCompany">
+<xs:sequence>
+<xs:element minOccurs="0" name="CompanyLink" type="drugPatentCompanyLink"/>
+<xs:element minOccurs="0" name="CountAsOwner" type="xs:int"/>
+<xs:element minOccurs="0" name="CountAsThirdParty" type="xs:int"/>
+<xs:element minOccurs="0" name="CountTotal" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugPatentCompanyLink">
+<xs:sequence/>
+<xs:attribute name="nameDisplay" type="xs:string"/>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="drugChangeHistoryOutput">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Change" type="drugChange"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugChange">
+<xs:sequence>
+<xs:element minOccurs="0" name="Date" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Reason" type="reason"/>
+<xs:element minOccurs="0" name="DetailFormatted" type="xs:string"/>
+<xs:element minOccurs="0" name="FieldsAdded">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Field" type="drugChangeField"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="FieldsChanged">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Field" type="drugChangeField"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="FieldsRemoved">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Field" type="drugChangeField"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CitationsAdded">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SourceLink" type="drugSourceLink"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CitationsRemoved">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SourceLink" type="drugSourceLink"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="type" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="reason">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugChangeField">
+<xs:sequence/>
+<xs:attribute name="newValue" type="xs:string"/>
+<xs:attribute name="newId" type="xs:string"/>
+<xs:attribute name="oldValue" type="xs:string"/>
+<xs:attribute name="oldId" type="xs:string"/>
+<xs:attribute name="value" type="xs:string"/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="structureResultsOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="SearchResults">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Drug" type="structureResultsOutputRecord"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Filters" type="structureResultsOutputFilters"/>
+<xs:element minOccurs="0" name="NormalizedQuery" type="xs:string"/>
+<xs:element minOccurs="0" name="Token" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="hits" type="xs:int" use="required"/>
+<xs:attribute name="offset" type="xs:int" use="required"/>
+<xs:attribute name="totalResults" type="xs:int" use="required"/>
+</xs:complexType>
+<xs:complexType name="structureResultsOutputRecord">
+<xs:sequence>
+<xs:element minOccurs="0" name="CompanyOriginator" type="xs:string"/>
+<xs:element minOccurs="0" name="CompaniesPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="IndicationsPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ActionsPrimary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Technologies">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Technology" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="TherapyAreas">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="TherapyArea" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Summary" type="xs:string"/>
+<xs:element minOccurs="0" name="CompaniesSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="IndicationsSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ActionsSecondary">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="StructuresId">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="StructureId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="StructuresSmileString">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="StructureSmileString" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="StructuresSimilarityScore">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="StructureSimilarityScore" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="StructuresSimilarityScoreMax" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="lastModificationDate" type="xs:string"/>
+<xs:attribute name="phaseHighest" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="structureResultsOutputFilters">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Filter" type="drugResultsOutputFilter"/>
+</xs:sequence>
+<xs:attribute name="total" type="xs:int" use="required"/>
+</xs:complexType>
+<xs:complexType name="companiesLinkedToTaxonomyOutput">
+<xs:complexContent>
+<xs:extension base="companiesLinkedToIndicationOutput">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="companiesLinkedToIndicationOutput">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Company" type="companiesLinkedToTaxonomyOutputCompany"/>
+</xs:sequence>
+<xs:attribute name="total" type="xs:int" use="required"/>
+</xs:complexType>
+<xs:complexType name="companiesLinkedToTaxonomyOutputCompany">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="drugCount" type="xs:int" use="required"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="drugSwotsOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="SWOTs">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SWOT" type="drugSwotRecordOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugSwotRecordOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Class" type="xs:string"/>
+<xs:element minOccurs="0" name="Strengths">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Strength" type="drugSwotTableOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Weaknesses">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Weakness" type="drugSwotTableOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Opportunities">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Opportunity" type="drugSwotTableOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Threats">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Threat" type="drugSwotTableOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugSwotTableOutput">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="sortOrder" type="xs:int"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="serviceVersion">
+<xs:sequence>
+<xs:element minOccurs="0" name="major" type="xs:string"/>
+<xs:element minOccurs="0" name="minor" type="xs:string"/>
+<xs:element minOccurs="0" name="patch" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugRecordsOutput">
+<xs:complexContent>
+<xs:extension base="stackOutputTailImpl">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Drug" type="drugRecordOutput"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="stackOutputTailImpl">
+<xs:sequence>
+<xs:element name="serviceExecutionTime" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="structureMolOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Mols">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Mol" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="drugSourcesOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Sources">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Source" type="commonSourceOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="TargetEntityType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="siDrug"/>
+<xs:enumeration value="organizationId"/>
+<xs:enumeration value="Mechanism"/>
+<xs:enumeration value="siCondition"/>
+<xs:enumeration value="omicsDisease"/>
+<xs:enumeration value="MEDDRA"/>
+<xs:enumeration value="MeSH"/>
+<xs:enumeration value="ORPHANET"/>
+<xs:enumeration value="ICD10"/>
+<xs:enumeration value="ICD9"/>
+<xs:enumeration value="siTarget"/>
+<xs:enumeration value="omicsTarget"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="SourceEntityType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Drug"/>
+<xs:enumeration value="Company"/>
+<xs:enumeration value="ciIndication"/>
+<xs:enumeration value="Action"/>
+<xs:enumeration value="ciTarget"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
+</grammars>
+<resources base="https://api.cortellis.com/api-ws/ws/rs/drugs-v2">
+<resource path="/">
+<resource path="company/taxonomy/{type}/{treecode}">
+<param name="type" style="template" type="xs:string"/>
+<param name="treecode" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/SWOTs/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/changeHistory/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/export/search/structure/">
+<method name="GET">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortby" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="fmt" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/export/search/structure/poll/">
+<method name="GET">
+<request>
+<param name="token" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/octet-stream"/>
+</response>
+</method>
+</resource>
+<resource path="drug/export/structure/">
+<method name="GET">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortby" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="fmt" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/export/structure/poll/">
+<method name="GET">
+<request>
+<param name="token" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/octet-stream"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search">
+<method name="GET">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="fmt" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="chemical/x-mdl-sdfile"/>
+<representation mediaType="application/vnd.ms-excel"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search/">
+<method name="GET">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortby" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="filtersEnabled" style="query" type="xs:string"/>
+<param name="querylanguage" style="query" type="xs:string"/>
+<param name="returnFilterCount" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search/structure/">
+<method name="GET">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortby" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="filtersEnabled" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search/structure/image/">
+<method name="GET">
+<request>
+<param name="structureId" style="query" type="xs:string"/>
+<param name="drugId" style="query" type="xs:string"/>
+<param name="size" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="image/png"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search/structure/image/{structureId}">
+<param name="structureId" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="size" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="image/png"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search/structure/molfile/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/search/structure/poll/">
+<method name="GET">
+<request>
+<param name="token" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/sourceSummary">
+<method name="GET">
+<request>
+<param name="id" style="query" type="xs:string"/>
+<param name="type" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/sources">
+<method name="GET">
+<request>
+<param name="idList" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/sources/{drugId}">
+<param name="drugId" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drug/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="fmt" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/msword"/>
+<representation mediaType="application/pdf"/>
+</response>
+</method>
+<method name="GET">
+<request>
+<param name="includeSources" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="drugs">
+<method name="GET">
+<request>
+<param name="idList" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="entities">
+<method name="GET">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="types" style="query" type="xs:string"/>
+<param name="fields" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="linkedTo" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="export/financial/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/pdf"/>
+</response>
+</method>
+</resource>
+<resource path="financial/chart/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="image/svg+xml"/>
+</response>
+</method>
+</resource>
+<resource path="financial/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/csv"/>
+</response>
+</method>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/pdf"/>
+</response>
+</method>
+</resource>
+<resource path="metadata/suported/{version}">
+<param name="version" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/json">
+<param name="result" style="plain" type="xs:boolean"/>
+</representation>
+</response>
+</method>
+</resource>
+<resource path="metadata/version">
+<method name="GET">
+<response>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="metadata/versions">
+<method name="GET">
+<response>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="search/structure/">
+<method name="POST">
+<request>
+<param name="query" style="query" type="xs:string"/>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortby" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="filtersEnabled" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="search/{query}/">
+<param name="query" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="offset" style="query" type="xs:string"/>
+<param name="hits" style="query" type="xs:string"/>
+<param name="sortby" style="query" type="xs:string"/>
+<param name="sortBy" style="query" type="xs:string"/>
+<param name="filtersEnabled" style="query" type="xs:string"/>
+<param name="querylanguage" style="query" type="xs:string"/>
+<param name="fmt" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="chemical/x-mdl-sdfile"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{type}/children/{treecode}">
+<param name="type" style="template" type="xs:string"/>
+<param name="treecode" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="includedescendants" style="query" type="xs:string"/>
+<param name="enableCounts" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{type}/parent/{treecode}">
+<param name="type" style="template" type="xs:string"/>
+<param name="treecode" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="enableCounts" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{type}/root/">
+<param name="type" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="enableCounts" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{type}/search/{searchstring}">
+<param name="type" style="template" type="xs:string"/>
+<param name="searchstring" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="expandhierarchy" style="query" type="xs:string"/>
+<param name="showDuplicates" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+</resource>
+</resources>
+</application>
